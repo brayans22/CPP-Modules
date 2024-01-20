@@ -1,4 +1,4 @@
-# ➡︎ CPP ⬅︎
+# ➡︎ CPP Modules ⬅︎
 
 ### Summary
 Excercises to pratice C++ from 42 Barcelona Campus.
