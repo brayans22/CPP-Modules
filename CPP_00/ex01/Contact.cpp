@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Contact.hpp"
 
-// Constructor
+/* Constructor */
 Contact::Contact()
 {
     this->firstName = "";
@@ -11,7 +11,7 @@ Contact::Contact()
     this->darkestSecret = "";
 }
 
-        // Getters
+/* Getters */
 const std::string&	Contact::getFirstName(void) const
 {
     return (this -> firstName);
@@ -37,6 +37,7 @@ const std::string&	Contact::getDarkestSecret(void) const
     return (this -> darkestSecret);
 }
 
+/* Setters */
 void Contact::setFirstName(std::string firstName)
 {
     this -> firstName = firstName;
@@ -62,4 +63,5 @@ void Contact::setNickName(std::string nickName)
     this -> nickName = nickName;
 }
 
+/* Destructor */
 Contact::~Contact(){}
