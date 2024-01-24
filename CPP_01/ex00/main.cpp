@@ -1,7 +1,6 @@
 #include "Zombie.hpp"
 
-void Zombie::announce() const
-void randomChump(std::string name)
+void randomChump(std::string name);
 
 int main(int argc, char **argv)
 {
