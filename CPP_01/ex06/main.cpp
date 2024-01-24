@@ -7,10 +7,8 @@ int main(int argc, char **argv)
     std::string level = argv[1];
 
     if (argc != 2) 
-    {
         return (std::cout << "Correct usage: ./harlFilter level\n", -1);
-    }
-    harl.activateFilter(leve);
+    harl.activateFilter(level);
 
-    return EXIT_SUCCESS;
+    return 0;
 }
