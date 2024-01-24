@@ -7,11 +7,6 @@ Zombie::Zombie() : name("") {}
 
 Zombie::Zombie(std::string name) : name(name) {}
 
-/* Constructor with parameters */
-Zombie::Zombie(std::string name) {
-    this -> name = name;
-}
-
 /* Setter */
 void Zombie::setName(std::string newName) {
     this -> name = newName;
