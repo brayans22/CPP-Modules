@@ -2,16 +2,9 @@
 #include "Contact.hpp"
 
 // Constructor
-Contact::Contact()
-{
-    this->firstName = "";
-    this->lastName = "";
-    this->nickName = "";
-    this->phoneNumber = "";
-    this->darkestSecret = "";
-}
+Contact::Contact() : firstName(""), lastName(""), nickName(""), phoneNumber(""), darkestSecret("") {}
 
-        // Getters
+// Getters
 const std::string&	Contact::getFirstName(void) const
 {
     return (this -> firstName);
