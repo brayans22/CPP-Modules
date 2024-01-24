@@ -4,7 +4,6 @@
 
 /* Constructors */
 Zombie::Zombie() : name("") {}
-
 Zombie::Zombie(std::string name) : name(name) {}
 
 /* Setter */
