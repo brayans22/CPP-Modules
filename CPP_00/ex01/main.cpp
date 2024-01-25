@@ -8,41 +8,33 @@
 #define SEARCH "SEARCH"
 
 
-static inline bool isInputValid(const std::string & input) {
+static bool isInputValid(const std::string & input) {
     return input == ADD || input == SEARCH || input == EXIT;
 }
 
 static void printOptions(void)
 {
     std::cout << "           ADD - Add a new contact          \n"
-            "           SEARCH - Display a contact       \n"
-            "           EXIT - Exit PhoneBook            \n"
-        << std::endl;
+                 "           SEARCH - Display a contact       \n"
+                 "           EXIT - Exit PhoneBook            \n"
+    << std::endl;
 }
 
 static std::string getOption(void)
 {
     std::string input;
 
+    printOptions();
     while (1)
     {
-        std::cout << "phone number : ";
+        std::cout << "Select an option: " << std::endl;
         getline(std::cin, input);
-        if (std::cin.eof())
-        {
-            std::cin.clear();  // Clear the eof flag
-            while (std::cin.get() != '\n')
-            {
-            }
-            //std::cin.ignore(std::numeric_limits<std::streamsize>std::max(), '\n');
-        }
-        /*
         if (!input.empty() && isInputValid(input))
-            break;
-        */
+            break ;
         std::cin.clear();
         std::cout << "Please insert a valid input" << std::endl;
     }
+    system("clear");
     return input;
 }
 
@@ -50,8 +42,7 @@ int main(void)
 {
     PhoneBook phoneBook;
     std::string option;
-
-    printOptions();
+    system("clear");
     while (1)
     {
         option = getOption();

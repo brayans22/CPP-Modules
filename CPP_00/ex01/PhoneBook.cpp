@@ -1,22 +1,11 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 
-/*
-
-using std::cout;
-using std::cin;
-using std::endl;
-
-*/
-
 int PhoneBook::isValidNumber(std::string number)
 {
-    int i;
-
-    i = -1;
-    while (number[i])
+    for (int i = 0; number[i]; i++)
     {
-        if (!std::isdigit(number[++i]))
+        if (!std::isdigit(number[i]))
             return (0);
     }
     return 1;
@@ -34,23 +23,47 @@ void display_contact_info(Contact contact)
 }
 
 // Default constructor
-PhoneBook::PhoneBook() { this -> count = 0; };
+PhoneBook::PhoneBook() : count(0){}
+
+bool PhoneBook::containsNumbers(std::string str)
+{
+	int i = 0;
+	bool contains = 0;
+
+	while (!contains && str[i])
+	{
+		contains = isdigit(str[i]);
+		i++;
+	}
+	return (contains);
+}
 
 void PhoneBook::addContact(void)
 {
 	Contact	new_contact;
-	std::string	input;
+	std::string	input = "";
 
-	std::cout << "First name? ";
-	getline(std::cin, input);
+	while (input.empty() || containsNumbers(input))
+	{
+		std::cout << "First name? ";
+		getline(std::cin, input);
+	}
 	new_contact.setFirstName(input);
 
-	std::cout << "Last name? ";
-	getline(std::cin, input);
+	input = "";
+	while (input.empty() || containsNumbers(input))
+	{
+		std::cout << "Last name? ";
+		getline(std::cin, input);
+	}
 	new_contact.setLastName(input);
 
-	std::cout << "Nickname? ";
-	getline(std::cin, input);
+	input = "";
+	while (input.empty())
+	{
+		std::cout << "Nickname? ";
+		getline(std::cin, input);
+	}
 	new_contact.setNickName(input);
 
 	while (1)
@@ -62,10 +75,16 @@ void PhoneBook::addContact(void)
 			std::cin.clear();
 			std::cout << "Phone number has to be numbers" << std::endl;
 		}
+		else
+			break ;
 	}
 
-	std::cout << "Darkest secret? ";
-	getline(std::cin, input);
+	input = "";
+	while (input.empty())
+	{
+		std::cout << "Darkest secret? ";
+		getline(std::cin, input);
+	}
 	new_contact.setDarkestSecret(input);
 
 	if (count > MAX_CONTACT_INDEX)
@@ -80,12 +99,15 @@ void PhoneBook::addContact(void)
 
 void PhoneBook::searchContact(void)
 {
+	std::string index_str;
+
 	if (count == 0)
 	{
-		std::cout << "There are no contacts to display! ❌" << std::endl;
+		std::cout << "There are no contacts to display!" << std::endl;
 		return ;
 	}
-	std::cout << "\n|     Index|First Name| Last Name|  Nickname|" << std::endl;
+
+	std::cout << "\n|Index|First Name| Last Name|  Nickname|" << std::endl;
 	for (size_t i = 0; i < this->count; i++)
 	{
 		std::cout << "|" << i << "|";
@@ -95,19 +117,17 @@ void PhoneBook::searchContact(void)
 		std::cout << std::endl;
 	}
 
-	std::string index;
-	int conv_index;
-
 	while (1)
 	{
 		std::cout << "Please insert the contact index: ";
-		getline(std::cin, index);
+		getline(std::cin, index_str);
         
-		std::cin.clear();
-		std::cout << "Invalid input" << std::endl;
+		if (stoi(index_str) > (int)(count - 1))
+			std::cout << "index not founded" << std::endl;
+		else	
+		{
+			display_contact_info(this->contacts[stoi(index_str)]);
+			break ;
+		}	
 	}
-	if ((size_t)conv_index > (count - 1))
-		std::cout << "index not founded" << std::endl;
-	else
-		display_contact_info(this->contacts[conv_index]);
 }

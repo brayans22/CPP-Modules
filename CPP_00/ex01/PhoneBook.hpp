@@ -22,6 +22,7 @@ class PhoneBook {
        void searchContact(void);
 
     private:
+        bool containsNumbers(std::string str);
         int isValidNumber(std::string number);
 };
 
