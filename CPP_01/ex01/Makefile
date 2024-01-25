@@ -1,6 +1,6 @@
 NAME = ex01
 CC = c++
-SRCS = Zombie.cpp main.cpp randomChump.cpp newZombie.cpp
+SRCS = Zombie.cpp main.cpp randomChump.cpp
 
 OBJS = 			${SRCS:.cpp=.o}
 CFLAGS = 		-Wall -Werror -Wextra -std=c++98
