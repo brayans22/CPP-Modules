@@ -5,9 +5,8 @@ Harl::Harl(){}
 
 void    Harl::warning(void) 
 {
-    std::cout << "[ WARNING ]" << std::endl;
-    std::cout << "I think I deserve to have some extra bacon for free. I've been coming foryears whereas you started working here since last month." << std::endl;
-    std::cout << std::endl;
+    std::cout << "I think I deserve to have some extra bacon for free.\n" <<
+    "I've been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void    Harl::error(void) 
@@ -36,15 +35,18 @@ void    Harl::activateFilter(std::string level)
     std::string levels[] = {"WARNING", "ERROR", "ORDER", "GREET"};
     int i = 0;
     while (i < 4 && levels[i].compare(level))
-        i++ ;
+        i++;
     switch (i)
     {
     case    0: 
         this->warning();
+        break ;
     case    1: 
         this->error();
+        break ;
     case    2: 
         this->order();
+        break ;
     case    3: 
         this->greet();
         break ;
