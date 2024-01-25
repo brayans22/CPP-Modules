@@ -33,10 +33,12 @@ void    Harl::complain(std::string level)
     // Creamos un vector que contenga la palabra asociada a cada funcion.
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-    int i = 0;
+    	int i = 0;
 	for (; i < 4; i++)
+	{
 		if (level == levels[i])
 			(this->*harl_functions[i])();
+	}
 }
 
 /* Destructor */
